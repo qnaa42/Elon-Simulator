@@ -169,7 +169,7 @@ public class RunMan_GameManager : BaseGameManager
         runSpeed += 0.02f;
         distanceCounter = 0;
         float randomY = Random.Range(playAreaTopY, playAreaBottomY);
-        Vector2 startPos = new Vector2(platformStartX, randomY);
+        Vector2 startPos = new Vector2(randomY, platformStartX);
 
         Instantiate(_platformPrefab, startPos, Quaternion.identity);
         distanceCounter = Random.Range(-0.5f, 0.25f);
