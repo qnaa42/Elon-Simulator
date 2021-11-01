@@ -18,9 +18,9 @@ public class RunMan_GameManager : BaseGameManager
     private float distanceCounter;
 
 
-    public float playAreaTopY = -0.4f;
-    public float playAreaBottomY = 0.2f;
-    public float platformStartX = 3f;
+    public float playAreaTopY = -500f;
+    public float playAreaBottomY = 500;
+    public float platformStartX = 1000f;
 
     public static RunMan_GameManager instance { get; private set; }
 
@@ -101,8 +101,8 @@ public class RunMan_GameManager : BaseGameManager
         base.Loaded();
 
              
-        _uiManager.SetHighScore(GetComponent<BaseProfileManager>().GetHighScore());
-        _RunManCharacter._playerStats.SetScore(0);
+ //       _uiManager.SetHighScore(GetComponent<BaseProfileManager>().GetHighScore());
+//        _RunManCharacter._playerStats.SetScore(0);
 
         SetTargetState(Game.State.gameStarting);
 
@@ -123,9 +123,9 @@ public class RunMan_GameManager : BaseGameManager
         distanceCounter = 1f;
         SetTargetState(Game.State.gameStarted);
 
-        _RunManCharacter.StartRunAnimation();
+   //     _RunManCharacter.StartRunAnimation();
 
-        InvokeRepeating("AddScore", 0.5f, 0.5f);
+  //      InvokeRepeating("AddScore", 0.5f, 0.5f);
        
 
     }
@@ -140,19 +140,19 @@ public class RunMan_GameManager : BaseGameManager
         CancelInvoke("AddScore");
 
         SetTargetState(Game.State.gameEnded);
-        if (GetComponent<BaseProfileManager>().SetHighScore(_RunManCharacter._playerStats.GetScore()) == true)
-        {
-            _uiManager.ShowGotHighScore();
-        }
+    //    if (GetComponent<BaseProfileManager>().SetHighScore(_RunManCharacter._playerStats.GetScore()) == true)
+    //    {
+    //        _uiManager.ShowGotHighScore();
+    //    }
 
         //update final score UI
-        _uiManager.SetFinalScore(_RunManCharacter._playerStats.GetScore());
+     //   _uiManager.SetFinalScore(_RunManCharacter._playerStats.GetScore());
 
     }
 
     void AddScore()
     {
-        _RunManCharacter._playerStats.AddScore(1);
+    //    _RunManCharacter._playerStats.AddScore(1);
     }
 
     void ReturnToMenu()
@@ -160,10 +160,10 @@ public class RunMan_GameManager : BaseGameManager
       //  SceneManager.LoadScene("runMan_menu");
     }
 
-    public void PlayerFell()
-    {
-        SetTargetState(Game.State.gameEnding);
-    }
+ //   public void PlayerFell()
+ //   {
+ //       SetTargetState(Game.State.gameEnding);
+  //  }
     void SpawnPlatform()
     {
         runSpeed += 0.02f;
@@ -182,7 +182,7 @@ public class RunMan_GameManager : BaseGameManager
             if ((distanceCounter >= distanceToSpawnPlatform))
                 SpawnPlatform();
             
-            _uiManager.SetScore(_RunManCharacter._playerStats.GetScore());
+        //    _uiManager.SetScore(_RunManCharacter._playerStats.GetScore());
         }
     }
     //set instance in this script's constructor
